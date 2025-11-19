@@ -1,0 +1,27 @@
+from gpiozero import LED, Button, MotionSensor
+from time import sleep
+
+
+myMotion = MotionSensor(15)
+led1 = LED(4)
+led2 = LED(15)
+button = Button(21)
+
+print("Starting script. Press Ctrl+C to quit")
+print("LED 1 is controlled by the myMotion sensor.")
+print("LED 2 is controlled by the button.")
+
+try:
+    while True:
+        if myMotion.motion_detected:
+            print("Motion detected! Truning on LED 1.")
+            led1.on()
+    else
+        led1.off()
+    if button.is_active:
+        print("Button Pressed! Turning on LED2.")
+        led2.on()
+    else:
+        led2.off()
+    sleep(0.1)
+     

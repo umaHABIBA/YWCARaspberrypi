@@ -1,0 +1,29 @@
+from gpiozero import LED, Button
+from time import sleep
+from gpiozero import MotionSensor
+
+myMotion = MotionSensor(15)
+
+while True:
+    myMotion.wait_for_motion()
+    print("You moved")
+    myMotion.wait_for_no_motion()
+    
+led1 = LED(4)
+led2 = LED(15)
+button = Button(21)
+
+while True:
+    button.wait_for_press()
+    led1.toggle()
+    sleep(0.5)
+
+while True:
+    led1.on() # current flows, LED lights up
+    sleep(.1)
+    led1.off() # current stops, LED turns off
+    sleep(.1)
+    led2.on() # current flows, LED lights up
+    sleep(.1)
+    led2.off() # current stops, LED turns off
+    sleep(.1)
